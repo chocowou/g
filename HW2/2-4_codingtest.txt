@@ -1,0 +1,18 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int a, int b) {
+    int answer = 0;
+    int t_a=a, t_b=b, max=0;
+    while(t_b>0){
+        t_a*=10;    t_b/=10;}
+    answer=t_a+b;
+    t_a=a;  t_b=b;
+    while(t_a>0){
+        t_b*=10;    t_a/=10;}
+    max=t_b+a;
+    if(answer<max)answer=max;
+    return answer;
+}
