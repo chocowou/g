@@ -1,0 +1,29 @@
+﻿  HW1Dlg.cpp
+C:\project\HW1\HW1\HW1Dlg.cpp(66,2): error C2664: 'void DDX_Control(CDataExchange *,int,CWnd &)': 인수 3을(를) 'int'에서 'CWnd &'(으)로 변환할 수 없습니다.
+  (소스 파일 '/HW1Dlg.cpp'을(를) 컴파일하는 중)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\atlmfc\include\afxdd_.h(71,13):
+      'DDX_Control' 선언을 참조하십시오.
+      C:\project\HW1\HW1\HW1Dlg.cpp(66,2):
+      인수 목록 '(CDataExchange *, int, int)'을(를) 일치시키는 동안
+  
+C:\project\HW1\HW1\HW1Dlg.cpp(67,2): error C2664: 'void DDX_Control(CDataExchange *,int,CWnd &)': 인수 3을(를) 'int'에서 'CWnd &'(으)로 변환할 수 없습니다.
+  (소스 파일 '/HW1Dlg.cpp'을(를) 컴파일하는 중)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\atlmfc\include\afxdd_.h(71,13):
+      'DDX_Control' 선언을 참조하십시오.
+      C:\project\HW1\HW1\HW1Dlg.cpp(67,2):
+      인수 목록 '(CDataExchange *, int, int)'을(를) 일치시키는 동안
+  
+C:\project\HW1\HW1\HW1Dlg.cpp(68,2): error C2664: 'void DDX_Control(CDataExchange *,int,CWnd &)': 인수 3을(를) 'int'에서 'CWnd &'(으)로 변환할 수 없습니다.
+  (소스 파일 '/HW1Dlg.cpp'을(를) 컴파일하는 중)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\atlmfc\include\afxdd_.h(71,13):
+      'DDX_Control' 선언을 참조하십시오.
+      C:\project\HW1\HW1\HW1Dlg.cpp(68,2):
+      인수 목록 '(CDataExchange *, int, int)'을(를) 일치시키는 동안
+  
+C:\project\HW1\HW1\HW1Dlg.cpp(69,2): error C2664: 'void DDX_Control(CDataExchange *,int,CWnd &)': 인수 3을(를) 'int'에서 'CWnd &'(으)로 변환할 수 없습니다.
+  (소스 파일 '/HW1Dlg.cpp'을(를) 컴파일하는 중)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\atlmfc\include\afxdd_.h(71,13):
+      'DDX_Control' 선언을 참조하십시오.
+      C:\project\HW1\HW1\HW1Dlg.cpp(69,2):
+      인수 목록 '(CDataExchange *, int, int)'을(를) 일치시키는 동안
+  
