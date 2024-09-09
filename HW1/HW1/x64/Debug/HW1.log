@@ -1,7 +1,5 @@
-﻿  HW1.cpp
-  HW1Dlg.cpp
-C:\project\HW1\HW1\HW1Dlg.cpp(10,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+﻿  HW1Dlg.cpp
+C:\project\grim\HW1\HW1\HW1Dlg.cpp(10,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
   (소스 파일 '/HW1Dlg.cpp'을(를) 컴파일하는 중)
   
-  코드를 생성하고 있습니다...
-  HW1.vcxproj -> C:\project\HW1\x64\Debug\HW1.exe
+  HW1.vcxproj -> C:\project\grim\HW1\x64\Debug\HW1.exe

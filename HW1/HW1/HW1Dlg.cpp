@@ -226,19 +226,20 @@ void CHW1Dlg::OnBnClickedButton1()
 		static RGBQUAD rgb[256];
 		for (int i = 0; i < 256; i++) {
 			rgb[i].rgbRed = i;
-			rgb[i].rgbGreen = i;
-			rgb[i].rgbBlue = i;
+			rgb[i].rgbGreen = 0;
+			rgb[i].rgbBlue = 0;
 		}
+		rgb[0xff].rgbGreen = 0xff; rgb[0xff].rgbBlue = 0xff;
 		m_image.SetColorTable(0, 256, rgb);
 	}
 	int nPitch = m_image.GetPitch();
 	unsigned char* fm = (unsigned char*)m_image.GetBits();
-	memset(fm, 0xffffff, nWidth * nHeight);
+	memset(fm, 0xff, nWidth * nHeight);
 
 	int x = x1, y = y1;
-	drawCircle(fm, x, y, nRandNum, 80);
+	drawCircle(fm, x, y, nRandNum, 0);
 	UpdateDisplay();
-
+	
 }
 
 
@@ -256,7 +257,7 @@ void CHW1Dlg::OnBnClickedButton2()
 	int a = x1, b = y1, c = x2, d = y2;
 	int dx = (c - a) / 5, dy = (d - b) / 5;
 	int next_x = a + dx * ver, next_y = b + dx * ver;
-	for (; ver < 5; ver++) {
+	for (; ver <= 4; ver++) {
 		g_strFileImage.Format(_T("%s\\circleImage_%d.bmp"), folderPath, ver);
 		m_image.Save(g_strFileImage);
 		moveCircle(a, b, a + dx, b + dy);
@@ -264,7 +265,7 @@ void CHW1Dlg::OnBnClickedButton2()
 		Sleep(1000);
 		
 	}
-	//moveCircle(a, b, c, d);
+	moveCircle(a, b, c, d);
 	g_strFileImage.Format(_T("%s\\circleImage_%d.bmp"), folderPath, ver);	
 	m_image.Save(g_strFileImage);
 }
@@ -292,17 +293,17 @@ void CHW1Dlg::OnBnClickedButton3()
 	int count = -1,ya;
 	for (int j = 0; j < nHeight; j++) {
 		for (int i = 0; i < nWidth; i++) {
-			if (fm[j * nPitch + i] == 80) {
+			if (fm[j * nPitch + i] == 0) {
 				if (count == -1)ya = j;
 				count++; break;}
 		}
 	}
 	tarR = count / 2; tarY = ya + tarR;
 	for (int i = 0; i < nWidth; i++)
-		if (fm[tarY * nPitch + i] == 80) {
+		if (fm[tarY * nPitch + i] == 0) {
 			tarX = i + tarR; break;
 		}
-	drawX(fm, tarX, tarY, 0);
+	drawX(fm, tarX, tarY, 250);
 	CString center;
 	center.Format(_T("( %d , %d )"), tarX, tarY);
 	SetDlgItemText(IDC_STATIC_result, center);
@@ -329,11 +330,11 @@ void CHW1Dlg::drawCircle(unsigned char* fm, int x, int y, int nRadius, int nGray
 void CHW1Dlg::drawX(unsigned char* fm, int x, int y, int nGray) {
 	int nPitch = m_image.GetPitch();
 	static RGBQUAD rgb[256];
-	for (int i = 0; i < 256; i++)
-		rgb[i].rgbRed = i;// rgb[i].rgbGreen = rgb[i].rgbBlue = i;
-	m_image.SetColorTable(0, 256, rgb);
-	int color = 20;
-	fm[(y - 2) * nPitch + (x - 2)] = color;
+	//for (int i = 0; i < 256; i++)
+	//	rgb[i].rgbRed = i;// rgb[i].rgbGreen = rgb[i].rgbBlue = i;
+	//m_image.SetColorTable(0, 256, rgb);
+	int color = nGray;
+	/*fm[(y - 2) * nPitch + (x - 2)] = color;
 	fm[(y - 1) * nPitch + (x - 1)] = color;
 	fm[(y - 0) * nPitch + (x - 0)] = color;
 	fm[(y - 1) * nPitch + (x + 1)] = color;
@@ -341,7 +342,18 @@ void CHW1Dlg::drawX(unsigned char* fm, int x, int y, int nGray) {
 	fm[(y + 1) * nPitch + (x - 1)] = color;
 	fm[(y + 2) * nPitch + (x - 2)] = color;
 	fm[(y + 1) * nPitch + (x + 1)] = color;
-	fm[(y + 2) * nPitch + (x + 2)] = color;
+	fm[(y + 2) * nPitch + (x + 2)] = color;*/
+	m_image.SetPixel(x, y, color);
+	m_image.SetPixel(x - 1, y - 1, color);
+	m_image.SetPixel(x - 2, y - 2, color);
+	m_image.SetPixel(x + 1, y - 1, color);
+	m_image.SetPixel(x + 2, y - 2, color);
+	m_image.SetPixel(x - 1, y + 1, color);
+	m_image.SetPixel(x - 2, y + 2, color);
+	m_image.SetPixel(x + 1, y + 1, color);
+	m_image.SetPixel(x + 2, y + 2, color);
+	
+	UpdateDisplay();
 }
 
 bool CHW1Dlg::isInCircle(int i, int j, int nCenterX, int nCenterY, int nRadius) {
@@ -356,7 +368,7 @@ bool CHW1Dlg::isInCircle(int i, int j, int nCenterX, int nCenterY, int nRadius) 
 
 void CHW1Dlg::moveCircle(int x1, int y1, int x2, int y2)
 {
-	int nGray = 80;
+	int nGray = 0;
 	int nWidth = m_image.GetWidth();
 	int nHeight = m_image.GetHeight();
 	int nPitch = m_image.GetPitch();
